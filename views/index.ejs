@@ -1,0 +1,10 @@
+<%- include('partials/head') %>
+
+<section class="homeContainer">
+    <% items.forEach(function(item) { %>
+        <a href="/detail/<%= item.id %>"><article class="homeContainer_item" style="background-image: url('https://fdnd-agency.directus.app/assets/<%= item.afbeelding %>');">
+        </article></a>
+    <% }) %>
+</section>
+
+<%- include('partials/foot') %>
