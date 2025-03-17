@@ -5,13 +5,16 @@
 import fetchJson from './helpers/fetch-json'
 
 //import express from node_modules folder
-import express, {response} from 'express'
+import express from 'express'
 
 // set base endpoint
 const apiURL = 'https://fdnd-agency.directus.app/admin/content'
 const items = apiURL + '/oba_profile'
 const families = apiURL + '/oba_family'
 const profiles = apiURL + '/oba_item'
+const books = apiURL + '/books'
+const activities = apiURL + '/activities'
+const cds = apiURL + '/cds'
 
 //create new express app
 const app = express()
@@ -21,7 +24,9 @@ const app = express()
 app.set ('view engine', 'ejs')
 
 //set ejs template folder
+
 app.set ('views', './views')
+
 
 // Use folder public for static resources
 app.use(express.static('public'))
@@ -99,7 +104,7 @@ app.get('/personal/:id', function (request, response) {
 
 //Start web server
 // Set Portnumber for express to listen
-app.set('port', process.env.PORT || 8000)
+app.set('port', process.env.PORT || 8080)
 
 // Start express, get the correct set portnumber
 app.listen(app.get('port'), function () {
