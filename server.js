@@ -1,113 +1,74 @@
-/*** Express setup & start ***/
-
-
-//Import function fetchJson from ./helpers folder
-import fetchJson from './helpers/fetch-json'
-
-//import express from node_modules folder
+// Importeer het npm package Express (uit de door npm aangemaakte node_modules map)
+// Deze package is geïnstalleerd via `npm install`, en staat als 'dependency' in package.json
 import express from 'express'
 
-// set base endpoint
-const apiURL = 'https://fdnd-agency.directus.app/admin/content'
-const items = apiURL + '/oba_profile'
-const families = apiURL + '/oba_family'
-const profiles = apiURL + '/oba_item'
-const books = apiURL + '/books'
-const activities = apiURL + '/activities'
-const cds = apiURL + '/cds'
+// Importeer de Liquid package (ook als dependency via npm geïnstalleerd)
+import { Liquid } from 'liquidjs';
 
-//create new express app
+// Maak een nieuwe Express applicatie aan, waarin we de server configureren
 const app = express()
 
-//set ejs as template engine
-//View engine ensures that the data from the api creates html of the ejs code
-app.set ('view engine', 'ejs')
+// Maak werken met data uit formulieren iets prettiger
+app.use(express.urlencoded({extended: true}))
 
-//set ejs template folder
-
-app.set ('views', './views')
-
-
-// Use folder public for static resources
+// Gebruik de map 'public' voor statische bestanden (resources zoals CSS, JavaScript, afbeeldingen en fonts)
+// Bestanden in deze map kunnen dus door de browser gebruikt worden
 app.use(express.static('public'))
 
-// ensure it's easy to work with request data
-app.use(express.urlencoded({ extended: true }));
+// Stel Liquid in als 'view engine'
+const engine = new Liquid();
+app.engine('liquid', engine.express());
 
-//routes
-// index GET route
-app.get('/', function (request, response) {
-    fetchJson(items).then((items) => {
-        // apiData consists of data needed
-        // Option to filter, sort, etc. before passing on to view
-        
-        // Render index.ejs from views folder and pass along fetched data as variables.
+// Stel de map met Liquid templates in
+// Let op: de browser kan deze bestanden niet rechtstreeks laden (zoals voorheen met HTML bestanden)
+app.set('views', './views')
 
-        
-        // create HTML based on JSON data
-        response.render('index', {
-            items: items.data})
-    })
+
+console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
+
+/*
+// Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
+app.get(…, async function (request, response) {
+  
+  // Zie https://expressjs.com/en/5x/api.html#res.render over response.render()
+  response.render(…)
 })
+*/
 
-// Details GET route
-app.get('/detail/:id', function (request, response) {
-    // Use request parameter id and fetch the correct data from directus.app
-    fetchJson(apiUrl + '/oba_item/' + request.params.id).then((items) => {
-        // Place console.log to see items
-        console.log(items);
+/*
+// Zie https://expressjs.com/en/5x/api.html#app.post.method over app.post()
+app.post(…, async function (request, response) {
 
-        // Render person.ejs from views folder and pass along fetched data as variables.
-        response.render('detail', {
-            items: items.data
-        });
-    });
-});
+  // In request.body zitten alle formuliervelden die een `name` attribuut hebben in je HTML
+  console.log(request.body)
 
-// chooseprofile GET route
-// chooseProfile GET route
-app.get('/chooseProfile', function (request, response) {
-    // create 2 apart fetch requests for families and profiles
-    Promise.all([fetchJson(families), fetchJson(profiles)])
-        .then(([families, profiles]) => {
-            // families and profiles consist of fetched data from API
-            console.log(families);
-            console.log(profiles);
+  // Via een fetch() naar Directus vullen we nieuwe gegevens in
 
-            // Render chooseProfile view and pass along fetched data
-            response.render('chooseProfile', {
-                families: families.data,
-                profiles: profiles.data
-            });
-        })
-        .catch((error) => {
-            // For errors that might occur while fetching data
-            console.error('Error fetching data:', error);
-            // Sent error message to user
-            response.status(500).send('Error fetching data');
-        });
-});
+  // Zie https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch over fetch()
+  // Zie https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify over JSON.stringify()
+  // Zie https://docs.directus.io/reference/items.html#create-an-item over het toevoegen van gegevens in Directus
+  // Zie https://docs.directus.io/reference/items.html#update-an-item over het veranderen van gegevens in Directus
+  await fetch(…, {
+    method: …,
+    body: JSON.stringify(…),
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  });
 
-// Personal GET route
-app.get('/personal/:id', function (request, response) {
-    // Use request parameter id and fetch the correct data from directus.app
-    fetchJson(items).then((items) => {
-        // Place console.log to see items
-
-        // Render person.ejs from views folder and pass along fetched data as variables.
-        response.render('personal', {
-            items: items.data
-        });
-    });
-});
+  // Redirect de gebruiker daarna naar een logische volgende stap
+  // Zie https://expressjs.com/en/5x/api.html#res.redirect over response.redirect()
+  response.redirect(303, …)
+})
+*/
 
 
-//Start web server
-// Set Portnumber for express to listen
-app.set('port', process.env.PORT || 8080)
+// Stel het poortnummer in waar Express op moet gaan luisteren
+// Lokaal is dit poort 8000; als deze applicatie ergens gehost wordt, waarschijnlijk poort 80
+app.set('port', process.env.PORT || 8000)
 
-// Start express, get the correct set portnumber
+// Start Express op, gebruik daarbij het zojuist ingestelde poortnummer op
 app.listen(app.get('port'), function () {
-    // show a message in console and give portnumber
-    console.log(`Application started on http://localhost:${app.get('port')}`)
+  // Toon een bericht in de console
+  console.log(`Daarna kun je via http://localhost:${app.get('port')}/ jouw interactieve website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
 })
