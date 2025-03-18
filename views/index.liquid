@@ -1,0 +1,143 @@
+{% render 'partials/head.liquid' %}
+<link rel="stylesheet" href="/styles/home.css">
+
+<main class="home-main">
+
+    <!--Gallery section-->
+    <section class="all-objects" id="gallery">
+        <ul class="object-container">
+
+            {% for art_object in art_objects %}
+            <li>
+                <article class="object">
+                    <a href="/art/{{art_object.id}}">
+                        <img src="https://fdnd-agency.directus.app/assets/{{ art_object.image }}" alt="">
+                        <p> {{art_object.title}} <p>
+                    </a>
+                </article>
+            </li>
+            {% endfor %}
+
+        </ul>
+
+        <button class="fullscreen fsbutton" id="fsinactive">
+            <img class="fullscreen-btn-inactive" src="/assets/icons/screensize/expand.png" alt="">
+        </button>
+        <button class="smallscreen fsbutton" id="fsactive">
+            <img class="fullscreen-btn-inactive" src="/assets/icons/screensize/arrows.png" alt="">
+        </button>
+
+    </section>
+
+    <section class="filter-and-search-container fullscreen-active">
+        <ul class="filter-container">
+            <li class="filter-button">
+                <button>All objects</button>
+            </li>
+            <li class="filter-button">
+                <button>Pottery</button>
+            </li>
+            <li class="filter-button">
+                <button> Islamic art</button>
+            </li>
+            <li class="filter-button">
+                <button> Tapestry</button>
+            </li>
+            <li class="filter-button">
+                <button>Glass</button>
+            </li>
+        </ul>
+
+        <form role="search" action="" class="search-bar" >
+            <label for="search"></label>
+            <input class="search-input" type="search" name="search" placeholder="look through the art" aria-placeholder="type to search">
+        </form>
+    </section>
+    <!--End Gallery section-->
+
+
+    <section class="qatar-museum home-page">
+        <div class="visit">
+            <a href="https://qm.org.qa/en/stories/all-stories/visiting-qatar-museums-during-ramadan/"><h3>Visiting Qatar Museum during ramadan</h3></a>
+            <p>read</p>
+        </div>
+
+        <div class="welcome">
+            <h3>Welcome to Qatar Museums</h3>
+            <p>Stop by one of our world-famous museums, explore a heritage site, or check out some public art. <a href="https://qm.org.qa/en/visit/">Plan your visit today!</a></p>
+        </div>
+
+<!--If there is data on this, <li> can be looped just like in .all-objects -->
+        <div class="musuems-container">
+            <ul>
+                <li>
+                    <article class="museum nmq">
+                        <img src="/assets/images/museum.jpg" alt="">
+                        <h2><a href="">National Museum Of Qatar</a></h2>
+                        <h6>Show more</h6>
+                    </article>
+                </li>
+                <li>
+                    <article class="museum mia">
+                        <img src="/assets/images/museum.jpg" alt="">
+                        <h2><a href="">Museum Of Islamic Art</a></h2>
+                        <h6>Show more</h6>
+                    </article>
+                </li>
+                <li>
+                    <article class="museum mathaf">
+                        <img src="/assets/images/museum.jpg" alt="">
+                        <h2><a href="">Mathaf: Arab Museum Of Modern Art</a></h2>
+                        <h6>Show more</h6>
+                    </article>
+                </li>
+                <li>
+                    <article class="museum olympic">
+                        <img src="/assets/images/museum.jpg" alt="">
+                        <h2><a href="">3-2-1 Qatar Olympic And Sports Museum</a></h2>
+                        <h6>Show more</h6>
+                    </article>
+                </li>
+                <li>
+                    <article class="museum see-more">
+                        <a href=""><h2>See all our museums and venues</h2></a>
+                    </article>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+    <section class="exhibition-container">
+
+        <img src="" alt="">
+
+        <article class="exhibition-text-container">
+            <h5>Exhibition</h5>
+            <a href=""><h2> Zidane A 21st Century Portrait</h2></a>
+            <h6> Still on View</h6>
+            <div class="exhibition-location">
+                <p> 3-2-1 Qatar Olympic and Sports Museum</p>
+            </div>
+        </article>
+
+    </section>
+
+    <section class="explore-our-stories-container">
+        <article>
+            <img src="" alt="">
+            <a href=""><h3>Gallery highlight: Horseback Hunting With The Great</h3></a>
+            <h6>By Ali alhuzeri</h6>
+            <div class="exhibition-location">
+                <p> 3-2-1 Qatar Olympic and Sports Museum</p>
+            </div>
+        </article>
+
+    </section>
+
+
+</main>
+
+<script src="/script/qatarmuseum.js"></script>
+
+{% render 'partials/foot.liquid' %}
