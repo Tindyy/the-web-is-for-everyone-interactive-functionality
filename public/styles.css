@@ -1,0 +1,158 @@
+:root{
+
+    /*Breakpoints*/
+   --breakpoint-mobile: 320px;
+   --breakpoint-tablet-small: 530px;
+   --breakpoint-tablet: 800px;
+   --breakpoint-desktop: 1480px;
+   --breakpoint-desktop-large: 2260px;
+
+   /*Colors*/
+   --color-black: #000;
+   --color-white: #fff;
+   --color-blue: #78aaf9;
+   --color-orange: #f6c343;
+   --color-yellow: #ffe40c;
+   --color-magenta: #e83082;
+   --color-dark-grey: #222222;
+
+   --transparency-overlay: rgba(255, 255, 255, 0.8);
+   --transparency-background: rgba(0, 0, 0, 0.55);
+   --transparency-button: rgba(0, 0, 0, 0.33);
+   --border: 1px solid #000;
+   --border-white: 1px solid #fff;
+
+    /*Typography*/
+
+    /*Font*//*To do: add font-family to all heading and p*/
+
+    /*Font Weight*/
+    --font-weight-bold: 700;
+    --font-weight-normal: 400;
+    --font-weight-light: 300;
+
+    /*h1*/
+   --h1-font-size: 3.75rem;
+   --h1-font-weight: var(--font-weight-light);
+   --h1-line-height: 1em;
+    /*h2*/
+   --h2-font-size: 1.875rem;
+   --h2-font-weight: var(--font-weight-light);
+   --h2-line-height: 1.1em;
+    /*h3*/
+   --h3-font-size: 1.625rem;
+   --h3-font-weight: var(--font-weight-normal);
+   --h3-line-height: 1em;
+    /*h4*/
+   --h4-font-size: 1.5rem;
+   --h4-font-weight: var(--font-weight-bold);
+   --heading-4-line-height: 1em;
+    /*h5*/
+   --h5-font-size: 1.125rem;
+   --h5-font-weight: var(--font-weight-bold);
+   --heading-5-line-height: 1.1em;
+    /*h6*/
+   --h6-font-size: 1rem;
+   --h6-font-weight: var(--font-weight-bold);
+   --h6-line-height: 1.1em;
+    /*p*/
+   --p-font-size: 1.2rem;
+   --p-font-weight: var(--font-weight-light);
+   --p-line-height: 1.5em;
+}
+
+body{
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media (min-width: 530px) {
+
+ }
+
+@media (min-width: 800px) {
+
+ }
+
+@media (min-width: 1480px) {
+
+ }
+ 
+@media (min-width: 2260px) {
+
+ }
+
+
+ h1{
+    font-size: var(--h1-font-size);
+    font-weight: var(--h1-font-weight);
+    line-height: var(--h1-line-height);
+}
+
+h2{
+    font-size: var(--h2-font-size);
+    font-weight: var(--h2-font-weight);
+    line-height: var(--h2-line-height);
+}
+
+h3{
+    font-size: var(--h3-font-size);
+    font-weight: var(--h3-font-weight);
+    line-height: var(--h3-line-height);
+}
+
+h4{
+    font-size: var(--h4-font-size);
+    font-weight: var(--h4-font-weight);
+    line-height: var(--h4-line-height);
+}
+
+h5{
+    font-size: var(--h5-font-size);
+    font-weight: var(--h5-font-weight);
+    line-height: var(--h5-line-height);
+}
+
+h6{
+    font-size: var(--h6-font-size);
+    font-weight: var(--h6-font-weight);
+    line-height: var(--h6-line-height);
+}
+
+p{
+    font-size: var(--p-font-size);
+    font-weight: var(--p-font-weight);
+    line-height: var(--p-line-height);
+}
+
+.button{
+    text-decoration: none;
+    color: var(--color-black);
+    background-color: var(--color-yellow);
+    border: var(--border);
+    padding: 1em;
+}
+
+.button:hover{
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: var(--color-white);
+}
+
+.button:active{
+    color: var(--color-black);
+    color: var(--transparency-button);
+    background-color: var(--color-yellow);
+    border: var(--border);
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+main{
+    padding: 1.25em;
+}
