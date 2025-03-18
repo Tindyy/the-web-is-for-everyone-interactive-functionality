@@ -1,0 +1,92 @@
+{% render 'partials/head.liquid' %}
+
+
+<main>
+<div class="detail-page-grid-container">
+<!--add if statements to fill empty-->
+    <section class="object-image">
+        {% if art.image %}
+        <img src="https://fdnd-agency.directus.app/assets/{{ art.image }}" alt="">
+        {% else %}
+        <h2>Sorry Image not found</h2>
+        {% endif %}
+    </section>
+
+    <section class="object-title-container">
+            {% if art.title %}
+            <h1 class="object-title"> {{art.title}} </h1>
+            {% else %}
+            <h1 class="object-title"> Unknown title </h1>
+            {% endif %}
+
+
+            {% if art.museum %}
+            <h3 class="object-museum"><a href="">{{art.museum}}</a></h3> <!--replace with {{object.museum}}-->
+            {% else %}
+            <h3 class="object-museum"><a href="">Unknown Museum</a></h3>
+            {% endif %}
+    </section>
+
+    <section class="description-container">
+        {% if art.summary %}
+            <p>{{art.summary}}</p>
+        {% else %}   
+        <p>Lorem ipsum dolor sit amet. Eum libero odit sit delectus maxime et praesentium nihil ut minus doloremque eum illum aliquid eos odio dicta et facere quasi. Sit omnis assumenda est
+            dolorum nihil aut itaque perspiciatis qui autem eligendi.
+
+           Ut quae quia eum voluptatem voluptatem et laborum distinctio eos minima consequuntur est deserunt dicta est dolorum quidem. Ut iste rerum ut provident expedita aut iure voluptas 
+           et quia minus non consequuntur enim qui unde delectus eos excepturi omnis. Est voluptatibus sapiente eum unde eveniet est magni earum. Ad reprehenderit fuga et ratione quia est nisi earum et animi obcaecati est obcaecati nostrum?
+       </p> 
+       {% endif %}
+    </section>
+
+    <section class="object-detail-table-container">
+            <h3 class="display-location">On Display at Mathaf</h3>
+            <table class="detail-table">
+                <!--replaceall data with api data-->
+                <tr>
+                    <th>Full title:</th>
+                    <td>A Collection of Portraits, Sketched from the Life Since the Year 1793...and engraved in imitation of Original Drawings, vol. 2</td>
+                </tr>
+                <tr>
+                    <th>Artist:</th>
+                    <td>{{art.artist}}</td>
+     
+                </tr>
+                <tr>
+                    <th>Location created:</th>
+                    <td>{{art.site}}</td>
+    
+
+                </tr>
+                <tr>
+                    <th>Period:</th>
+                    <td>{{art.displayDate}}</td>
+                </tr>
+                <tr>
+                    <th>Material:</th>
+                    <td>{{art.materials}}</td>
+                </tr>
+                <tr>
+                    <th>Dimensions:</th>
+                    <td>unknown</td>
+                </tr>
+                <tr>
+                    <th>Object number:</th>
+                    <td>{{art.objectNumber}}</td>
+                </tr>
+                <tr>
+                    <th>Record type:</th>
+                    <td>{{art.recordType}}</td>
+                </tr>
+                <tr>
+                    <th>Classification:</th>
+                    <td>Unknown</td>
+                </tr>
+            </table>
+    </section>
+</div>
+
+</main>
+
+{% render 'partials/foot.liquid' %}
