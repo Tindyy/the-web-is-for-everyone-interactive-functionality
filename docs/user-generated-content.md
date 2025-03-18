@@ -16,7 +16,7 @@ Hierna gaan we een Wireflow schetsen met nette URLs, routes aanmaken, een HTML f
 Komende vrijdag ga je je interactie testen tijdens de code/design review.
 
 
-## Interactieve functionaliteit (vanaf 10:30 uur)
+## Interactieve functionaliteit schetsen
 
 Tot nu toe heb je een overzichtspagina en een detailpagina gemaakt voor de opdrachtgever. Je hebt hiervoor `GET` requests gebruikt. Voor je eigen routes en voor de fetches naar Directus. Hier komen deze sprint `POST` requests bij. Maar hiervoor moeten we eerst bepalen _wat_ we willen gaan maken.
 
@@ -51,7 +51,7 @@ Stap 2, de simpelste techniek hiervoor, is in dit geval een `<form>` in HTML. Di
 Later deze sprint (en in Sprint 11 nog meer) gaan we deze interactie uitbreiden met extra _enhancements_. Voor nu richten we ons op de eerste twee stappen van _Progressive Enhancement_, zodat we die goed onder de knie krijgen.
 
 
-## Wireflow
+## Wireflow breakdown met url's, routes en POST 
 
 Deze _simpelste techniek_ voor eindgebruikers—een `<form>`, HTTP methods en URLs—, gecombineerd met onze Directus JSON API en Express, brengt best wat complexiteit met zich mee. Daarom gaan we deze interactie eerst weer uittekenen.
 
@@ -71,7 +71,7 @@ We gaan straks verder met het aanmaken van routes, het maken van het formulier, 
 - [Wireflow en dynamische data @ Sprint 8](https://github.com/fdnd-task/server-side-rendering-server-side-website/blob/main/docs/templating-met-json.md#wireflow-en-dynamische-data)
 
 
-## Routes (vanaf 12:00)
+## Routes
 
 Gebruik de hints uit je Wireflow schets en de bronnen hieronder om jouw `POST` route(s) aan te maken in `server.js`. Je kunt hiervoor nieuwe issues aanmaken.
 
