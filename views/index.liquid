@@ -3,58 +3,6 @@
 
 <main class="home-main">
 
-    <!--Gallery section-->
-    <section class="all-objects" id="gallery">
-        <ul class="object-container">
-
-            {% for art_object in art_objects %}
-            <li>
-                <article class="object">
-                    <a href="/art/{{art_object.id}}">
-                        <img src="https://fdnd-agency.directus.app/assets/{{ art_object.image }}" alt="{{ art_object.title }}">
-                        <p>{{art_object.title}}</p>
-                    </a>
-                </article>
-            </li>
-            {% endfor %}
-
-        </ul>
-
-        <button class="fullscreen fsbutton" id="fsinactive">
-            <img class="fullscreen-btn-inactive" src="/assets/icons/screensize/expand.png" alt="">
-        </button>
-        <button class="smallscreen fsbutton" aria-hidden="true" id="fsactive">
-            <img class="fullscreen-btn-inactive" src="/assets/icons/screensize/arrows.png" alt="">
-        </button>
-
-    </section>
-
-    <section class="filter-and-search-container fullscreen-active">
-        <ul class="filter-container">
-            <li class="filter-button">
-                <button> All objects </button>
-            </li>
-            <li class="filter-button">
-                <button>Pottery</button>
-            </li>
-            <li class="filter-button">
-                <button> Islamic art </button>
-            </li>
-            <li class="filter-button">
-                <button> Tapestry </button>
-            </li>
-            <li class="filter-button">
-                <button> Glass </button>
-            </li>
-        </ul>
-
-        <form role="search" action="" class="search-bar" >
-            <label for="search">Search for artwork</label>
-            <input class="search-input" type="search" name="search" placeholder="Look through the art" aria-label="Search for artwork">
-        </form>
-    </section>
-    <!--End Gallery section-->
-
 
     <section class="qatar-museum home-page">
         <div class="visit">

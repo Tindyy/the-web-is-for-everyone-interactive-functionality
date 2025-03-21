@@ -39,21 +39,15 @@ app.set('views', './views')
 //get all the data from the api
 
 app.get('/', async function (request, response){
-  const apiResponse = await fetch ('https://fdnd-agency.directus.app/items/fabrique_art_objects') 
-  const apiResponseJSON = await apiResponse.json()
-
-  const titleResponse = await fetch ('https://fdnd-agency.directus.app/items/fabrique_art_objects/?fields=title')
-  const titleResponseJSON = await titleResponse.json()
 
   response.render('index.liquid', {
-    art_objects: apiResponseJSON.data,
-    titles: titleResponseJSON.data
   });
 
 
 })
 
-// GET
+
+// GET artObjectDetail
 app.get('/art/:id/', async function (request, response){
 
   const artId = request.params.id;
@@ -67,26 +61,43 @@ app.get('/art/:id/', async function (request, response){
 
 })
 
-//POST
-// app.post('/:id/art_object_detail', (req, res)=> {
-//   console.log(req.params.id)
-//   res.send('')
-// })
+
+//Ticketing
+app.get('/tickets', async function (request, response){
+
+  response.render ('ticketing.liquid')
+})
 
 
+
+
+
+// Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
+// Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
+app.post('/like/:id', async function (request, response) {
+  // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
+  // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
+  console.log(request.params.id + "is geliked! Cool!");
+
+  let response2 = await fetch("https://fdnd-agency.directus.app/items/fabrique_users_fabrique_art_objects", {
+    method: "POST",
+    body: JSON.stringify({
+      "fabrique_users_id": 5,
+      "fabrique_art_objects_id": request.params.id
+
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+  })
+  console.log(response2)
+  response.redirect(303, '/')
+})
 
 //404 handle
 
 app.use((request, response, next) => {
   response.status(404).render("404.liquid")
-})
-
-// Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
-// Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
-app.post('/', async function (request, response) {
-  // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
-  // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
-  response.redirect(303, '/')
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
