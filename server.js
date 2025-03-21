@@ -47,6 +47,21 @@ app.get('/', async function (request, response){
 })
 
 
+app.get('/gallery', async function (request, response){
+  const apiResponse = await fetch ('https://fdnd-agency.directus.app/items/fabrique_art_objects') 
+  const apiResponseJSON = await apiResponse.json()
+
+  const titleResponse = await fetch ('https://fdnd-agency.directus.app/items/fabrique_art_objects/?fields=title')
+  const titleResponseJSON = await titleResponse.json()
+
+  response.render('gallery.liquid', {
+    art_objects: apiResponseJSON.data,
+    titles: titleResponseJSON.data
+  });
+
+
+})
+
 // GET artObjectDetail
 app.get('/art/:id/', async function (request, response){
 
