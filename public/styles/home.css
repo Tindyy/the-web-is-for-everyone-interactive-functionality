@@ -1,0 +1,118 @@
+/*rest of the homepage*/
+.home-page:active{
+    display: block;
+}
+
+.visit{
+    position: relative;
+    display: inline-block;
+    padding: .5em;
+    border: var(--border);
+    background-color: var(--color-white);
+    z-index: 5;
+    left: 30%;
+    transform: translateX(-50%) translateY(-30%);
+    width: 30vw;
+
+    @media (min-width: 530px) {
+        left: 50%;
+    }
+   
+}
+
+.qatar-museum a{
+    text-decoration: none;
+}
+
+.qatar-museum a:hover{
+    text-decoration: underline;
+}
+
+.visit p{
+    border-top: var(--border);
+    padding: .25em;
+}
+
+.welcome{
+    border-top: var(--border);
+    border-bottom: var(--border);
+}
+/*museum container styling*/
+
+.musuems-container ul {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    position: relative;
+
+    @media (min-width: 530px) {
+        justify-content: center; 
+        flex-direction: row;
+        align-items: stretch;
+    }
+}
+
+.musuems-container li {
+    flex: 1; 
+    position: relative;
+}
+
+.museum{
+    border: var(--border);
+    padding: .5em;
+    display: inline-block;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+
+    background-color: var(--color-white);
+    @media (min-width: 530px) {
+        
+    }
+}
+
+.museum img{
+    width: 65vw;
+    display: block;
+
+    @media (min-width: 530px) {
+        width: 17vw;
+    }
+}
+
+
+.museum h2{
+    width: 65vw;
+    margin: 0;
+
+    @media (min-width: 530px) {
+        width: 17vw;
+    }
+}
+
+/*museum container animation*/
+/* Calculate positions dynamically */
+.museum:nth-child(n) {
+    z-index: calc(5 - var(--index));
+    transform: translateX(calc(-10% * var(--index)));
+}
+
+/* Hover effect: move slightly left */
+.museum:nth-child(n):hover {
+    transform: translateX(calc(-15% * var(--index) - 5%));
+    text-decoration: underline;
+
+}
+
+.museum:nth-child(n):active {
+    z-index: calc(5 - var(--index));
+    transform: translateX(calc(-10% * var(--index)));
+    width: 100%;
+}
+
+
+/* Assign index values using CSS variables */
+.museum:nth-child(1) { --index: 0; }
+.museum:nth-child(2) { --index: 1; }
+.museum:nth-child(3) { --index: 2; }
+.museum:nth-child(4) { --index: 3; }
+.museum:nth-child(5) { --index: 4; } 
