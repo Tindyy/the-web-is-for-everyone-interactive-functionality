@@ -54,6 +54,16 @@ app.get('/gallery', async function (request, response){
   const titleResponse = await fetch ('https://fdnd-agency.directus.app/items/fabrique_art_objects/?fields=title')
   const titleResponseJSON = await titleResponse.json()
 
+    // Fetch the user's liked objects
+    const likedResponse = await fetch(`https://fdnd-agency.directus.app/items/fabrique_users_fabrique_art_objects?filter={"fabrique_users_id":5}`);
+    const likedJSON = await likedResponse.json();
+    const likedIds = likedJSON.data.map(item => item.fabrique_art_objects_id); // Extract liked object IDs
+  
+    // Add `is_liked` property to each art object
+    apiResponseJSON.data.forEach(obj => {
+      obj.is_liked = likedIds.includes(obj.id);
+    });
+
   response.render('gallery.liquid', {
     art_objects: apiResponseJSON.data,
     titles: titleResponseJSON.data
@@ -105,9 +115,38 @@ app.post('/like/:id', async function (request, response) {
       'Content-Type': 'application/json'
     },
   })
+
   console.log(response2)
-  response.redirect(303, '/')
+  response.redirect(303, '/gallery')
+
 })
+
+app.post('/unlike/:id', async function (request, response) {
+  console.log(request.params.id + " is unliked!");
+
+  // First, fetch the ID of the liked item
+  let idRes = await fetch(`https://fdnd-agency.directus.app/items/fabrique_users_fabrique_art_objects?filter={"fabrique_art_objects_id":${request.params.id},"fabrique_users_id":5}`);
+  let idJson = await idRes.json();
+
+  if (idJson.data.length === 0) {
+    console.log("No like found to unlike.");
+    return response.redirect(303, '/gallery');
+  }
+
+  let id = idJson.data[0].id;
+
+  // Now, send the DELETE request
+  await fetch(`https://fdnd-agency.directus.app/items/fabrique_users_fabrique_art_objects/${id}`, {
+    method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  console.log("Unlike successful!");
+  response.redirect(303, '/');
+});
+
 
 //404 handle
 

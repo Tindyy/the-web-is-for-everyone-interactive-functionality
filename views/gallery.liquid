@@ -12,10 +12,20 @@
                         <a href="/art/{{art_object.id}}">
                             <img src="https://fdnd-agency.directus.app/assets/{{ art_object.image }}" alt="{{ art_object.title }}">
                             <p>{{art_object.title}}</p>
-                            <form action="/like/{{art_object.id}}" method="POST"><button type="submit">Give this a Like</button></form>
                         </a>
                     </article>
                 </li>
+                <!--like and unlike function-->
+                {% if art_object.is_liked %}
+                <form action="/unlike/{{ art_object.id }}" method="POST">
+                    <button type="submit"> unlike </button>
+                </form>
+                {% else %}
+                <form action="/like/{{ art_object.id }}" method="POST">
+                    <button type="submit"> like this </button>
+                </form>
+                {% endif %}
+
                 {% endfor %}
     
             </ul>
