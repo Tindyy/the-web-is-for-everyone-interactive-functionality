@@ -31,6 +31,9 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/the-web
 
 ## Bronnen
 
+Light to Dark mode switch:
+https://www.youtube.com/watch?v=S-T9XoCMwt4&ab_channel=RedStapler
+
 ## Licentie
 
 This project is licensed under the terms of the [MIT license](./LICENSE).

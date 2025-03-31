@@ -80,19 +80,13 @@ app.get('/art/:id/', async function (request, response){
   const apiResponse = await fetch(`https://fdnd-agency.directus.app/items/fabrique_art_objects/${artId}`);
   const apiResponseJSON = await apiResponse.json();
 
+  
+
   response.render('artObjectDetail.liquid', {
     art: apiResponseJSON.data  
   });
 
 })
-
-
-//Ticketing
-app.get('/tickets', async function (request, response){
-
-  response.render ('ticketing.liquid')
-})
-
 
 
 
@@ -102,7 +96,7 @@ app.get('/tickets', async function (request, response){
 app.post('/like/:id', async function (request, response) {
   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
   // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
-  console.log(request.params.id + "is geliked! Cool!");
+  console.log(request.params.id + "is geliked!");
 
   let response2 = await fetch("https://fdnd-agency.directus.app/items/fabrique_users_fabrique_art_objects", {
     method: "POST",
@@ -143,9 +137,15 @@ app.post('/unlike/:id', async function (request, response) {
     }
   });
 
-  console.log("Unlike successful!");
-  response.redirect(303, '/');
+  response.redirect(303, '/gallery');
 });
+
+//Ticketing
+app.get('/tickets', async function (request, response){
+
+  response.render ('ticketing.liquid')
+})
+
 
 
 //404 handle
