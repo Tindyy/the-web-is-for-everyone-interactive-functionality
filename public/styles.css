@@ -175,7 +175,8 @@ input[type="checkbox"] {
     width: 1px;
     height: 1px;
 }
-/* Style the switch */
+
+
 label {
     width: 60px;
     height: 30px;
@@ -187,7 +188,7 @@ label {
     cursor: pointer;
 }
 
-/* Create the slider */
+
 label::after {
     content: "";
     width: 26px;

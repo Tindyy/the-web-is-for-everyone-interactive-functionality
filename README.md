@@ -33,6 +33,18 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/the-web
 
 Light to Dark mode switch:
 https://www.youtube.com/watch?v=S-T9XoCMwt4&ab_channel=RedStapler
+I used this video for inspiration to make the switch to change the theme of the page. 
+For now the switch will only be on the gallery page, however I did the styling in the styles.css so it can be added on every page if wanted later on.
+
+A user would want to be able to use keyboard navigation to switch the theme from dark to light and vice versa. 
+
+The `<input type="checkbox">` remains focusable because it's only visually hidden `opacity: 0;` instead of `display: none;` or `visibility: hidden;`
+The `input:focus + label` rule adds an orange outline, ensuring users can see which element is focused when navigating with the keyboard.
+
+progressive enhancement: 
+The checkbox works by default with standard HTML, if styles or JavaScript fail to load, the checkbox is still usable.
+The switch only visually replaces the checkbox but keeps the same functionality.
+
 
 ## Licentie
 
