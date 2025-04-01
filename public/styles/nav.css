@@ -9,6 +9,7 @@
 .nav {
     border-bottom: var(--border);
     background-color: var(--color-white);
+    padding: .5em;
 
     @media (min-width: 800px) {
         display: flex;
@@ -16,6 +17,10 @@
         align-items: center;
     }
 
+}
+
+.qatar-museum-logo a img{
+    padding-left: .5em;
 }
 
 .nav ul {
