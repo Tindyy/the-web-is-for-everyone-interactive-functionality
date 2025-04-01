@@ -20,6 +20,15 @@
    --transparency-background: rgba(0, 0, 0, 0.55);
    --transparency-button: rgba(0, 0, 0, 0.33);
 
+
+   /* Dark Mode */
+   --background-color: var(--color-grey);
+   --text-color: var(--color-white);
+   --primary-color: var(--color-blue);
+   --secondary-color: var(--color-orange);
+   --highlight-color: var(--color-magenta);
+   --border-color: var(--color-white);
+
    /*border*/
    --border: 1px solid #000;
    --border-white: 1px solid #fff;
@@ -28,9 +37,12 @@
    --swicth-darkmode-background: #ffffff;
    --switch-darkmode: linear-gradient(180deg, #f6c343, #d8860b) ;
    --switch-darkmode-box-shadow: inset 0px 5px 15px rgba(0,0,0,0.4), inset 0px -5px 15px rgba(255,255,255,0.4);
+
    --switch-lightmode-background:#242424;
    --switch-lightmode:linear-gradient(180deg, #777, #3a3a3a);
    --switch-lightmode-box-shadow: 0px 5px 10px rgba(0,0,0,0.2);
+
+
 
 
     /*Typography*/
@@ -76,6 +88,28 @@ body{
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Dark Mode */
+body.dark-mode {
+    background-color: var(--color-dark-grey);
+    color: var(--color-white);
+}
+
+body.dark-mode a {
+    color: var(--color-white);
+}
+
+body.dark-mode button {
+    background-color: var(--secondary-color);
+    color: var(--color-grey);
+    border: 1px solid var(--border-color);
+}
+
+body.dark-mode button:hover {
+    background-color: var(--highlight-color);
+}
+
+/*breakpoints*/
 
 @media (min-width: 530px) {
 
@@ -169,7 +203,7 @@ main{
 /* theme switch */
 
 /* Hide default checkbox but keep it focusable */
-input[type="checkbox"] {
+input.switch[type="checkbox"] {
     position: absolute;
     opacity: 0;
     width: 1px;
@@ -177,7 +211,7 @@ input[type="checkbox"] {
 }
 
 
-label {
+label.switch {
     width: 60px;
     height: 30px;
     display: inline-block;
@@ -189,7 +223,7 @@ label {
 }
 
 
-label::after {
+label.switch::after {
     content: "";
     width: 26px;
     height: 26px;
@@ -202,16 +236,16 @@ label::after {
 }
 
 /* Checked state */
-input:checked + label {
+input.switch:checked + label {
     background: var(--swicth-darkmode-background);
 }
 
-input:checked + label::after {
+input.switch:checked + label::after {
     background: var(--switch-darkmode);
     left: 32px;
 }
 
 /* Visible focus outline */
-input:focus + label {
+input.switch:focus + label {
     outline: 2px solid var(--color-orange);
 }
