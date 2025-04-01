@@ -146,6 +146,11 @@ app.get('/tickets', async function (request, response){
   response.render ('ticketing.liquid')
 })
 
+//About us with FAQ
+app.get('/aboutUs', async function (request, response){
+
+  response.render ('about.liquid')
+})
 
 
 //404 handle
