@@ -114,9 +114,6 @@
 
 /* like button*/
 
-form{
-    background-color: var(--color-white);
-}
 
 button{
     border: none;

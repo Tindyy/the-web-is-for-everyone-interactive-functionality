@@ -19,6 +19,11 @@
 
 }
 
+.nav.darmode{
+    border-bottom: var(--color-white);
+    background-color: var(--color-dark-grey);
+}
+
 .qatar-museum-logo a img{
     padding-left: .5em;
 }
